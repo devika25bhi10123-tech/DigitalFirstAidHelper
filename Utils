@@ -1,0 +1,14 @@
+import re
+
+def clean_text(s: str) -> str:
+    """Lowercase, strip and remove extra spaces."""
+    if not s:
+        return ""
+    s = s.lower().strip()
+    s = re.sub(r'\s+', ' ', s)
+    return s
+
+def print_section(title: str):
+    print("=" * len(title))
+    print(title)
+    print("=" * len(title))
