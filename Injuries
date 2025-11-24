@@ -1,0 +1,88 @@
+
+  {
+    "name": "burn",
+    "keywords": ["burn", "burns"],
+    "description": "Thermal or chemical burn to skin",
+    "first_aid": [
+      "Remove person from source of burn.",
+      "Cool the burn under running cool (not cold) water for 10-20 minutes.",
+      "Remove jewelry or tight items before swelling starts.",
+      "Cover burn loosely with sterile, non-stick dressing.",
+      "Do not apply ice, butter, toothpaste, or oily creams."
+    ],
+    "precautions": [
+      "Do not break blisters.",
+      "Do not apply creams or home remedies.",
+      "Avoid using ice directly."
+    ],
+    "danger_signs": [
+      "Burns larger than the palm of the victim's hand.",
+      "Burns on face, hands, feet, genitals, major joints.",
+      "Deep, charred, or white leathery areas.",
+      "Signs of shock or difficulty breathing."
+    ],
+    "recommendation": "Seek immediate medical attention if danger signs are present."
+  },
+
+  {
+    "name": "cut",
+    "keywords": ["cut", "laceration", "bleeding", "wound"],
+    "description": "Open wound from a sharp object",
+    "first_aid": [
+      "Apply direct pressure with a clean cloth to stop bleeding.",
+      "Elevate the injured part if possible.",
+      "Clean the wound gently with clean water.",
+      "Cover with sterile dressing."
+    ],
+    "precautions": [
+      "Do not remove deeply embedded objects.",
+      "Avoid strong antiseptics unless advised by a doctor."
+    ],
+    "danger_signs": [
+      "Heavy bleeding that doesn't stop with pressure.",
+      "Signs of infection like redness or pus.",
+      "Very deep wounds."
+    ],
+    "recommendation": "Seek medical help if bleeding continues or wound is deep."
+  },
+
+  {
+    "name": "nosebleed",
+    "keywords": ["nosebleed", "nose bleed", "epistaxis"],
+    "description": "Bleeding from the nose",
+    "first_aid": [
+      "Sit upright and lean slightly forward.",
+      "Pinch the soft part of the nose for 10 minutes.",
+      "Place an ice pack on the nose bridge."
+    ],
+    "precautions": [
+      "Do not tilt head back.",
+      "Do not blow nose for 24 hours."
+    ],
+    "danger_signs": [
+      "Bleeding lasting more than 20-30 minutes.",
+      "Bleeding after a head injury."
+    ],
+    "recommendation": "Seek emergency care if bleeding doesn't stop."
+  },
+
+  {
+    "name": "sprain",
+    "keywords": ["sprain", "twist", "sprained"],
+    "description": "Ligament injury due to twisting or overstretching",
+    "first_aid": [
+      "Use R.I.C.E: Rest, Ice, Compression, Elevation.",
+      "Avoid weight-bearing on injured limb."
+    ],
+    "precautions": [
+      "Do not apply heat for first 48 hours.",
+      "Avoid massage immediately after injury."
+    ],
+    "danger_signs": [
+      "Severe swelling or deformity.",
+      "Inability to move limb."
+    ],
+    "recommendation": "Seek medical help if severe pain or deformity present."
+  }
+]
+
