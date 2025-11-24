@@ -1,0 +1,90 @@
+from first_aid_engine import FirstAidEngine
+from utils import print_section
+
+def show_main_menu():
+    print("\n--- Digital First Aid Helper ---")
+    print("1. Get first aid by injury name")
+    print("2. Search by symptom / keyword")
+    print("3. List all supported injuries")
+    print("4. Add a quick note / emergency contact")
+    print("5. Exit")
+
+def show_injury(injury):
+    if not injury:
+        print("No information available.")
+        return
+
+    print_section(f"FIRST AID: {injury.get('name', '').upper()}")
+
+    print("Description:")
+    print(injury.get("description", "N/A"))
+
+    print("\nImmediate Steps:")
+    for step in injury.get("first_aid", []):
+        print(f"- {step}")
+
+    print("\nPrecautions (DO NOT):")
+    for p in injury.get("precautions", []):
+        print(f"- {p}")
+
+    print("\nDanger Signs:")
+    for d in injury.get("danger_signs", []):
+        print(f"- {d}")
+
+    print("\nRecommendation:")
+    print(injury.get("recommendation", ""))
+
+def main():
+    engine = FirstAidEngine()
+    notes_file = "quick_notes.txt"
+
+    while True:
+        show_main_menu()
+        choice = input("Enter choice (1-5): ").strip()
+
+        if choice == "1":
+            q = input("Enter injury name: ").strip()
+            injury = engine.find_by_name(q)
+            if injury:
+                show_injury(injury)
+            else:
+                print("Sorry, no match found.")
+
+        elif choice == "2":
+            q = input("Enter symptom/keyword: ").strip()
+            matches = engine.search_by_symptom(q)
+
+            if not matches:
+                print("No matches found.")
+            else:
+                print(f"Found {len(matches)} match(es):")
+                for pos, item in enumerate(matches, start=1):
+                    print(f"{pos}. {item.get('name')} - {item.get('description')}")
+
+                sel = input("Enter number for details (Enter to skip): ").strip()
+                if sel.isdigit() and 1 <= int(sel) <= len(matches):
+                    show_injury(matches[int(sel) - 1])
+
+        elif choice == "3":
+            print("Supported injuries:")
+            for name in engine.get_all_injuries():
+                print(f"- {name}")
+
+        elif choice == "4":
+            note = input("Enter note/contact to save: ").strip()
+            if note:
+                with open(notes_file, "a", encoding="utf-8") as f:
+                    f.write(note + "\n")
+                print("Saved.")
+            else:
+                print("Empty note not saved.")
+
+        elif choice == "5":
+            print("Exiting. Stay safe!")
+            break
+
+        else:
+            print("Invalid option! Try again.")
+
+if __name__ == "__main__":
+    main()
