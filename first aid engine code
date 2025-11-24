@@ -1,0 +1,50 @@
+from injury_database import load_injuries
+from utils import clean_text
+
+class FirstAidEngine:
+    def __init__(self):
+        self.injuries = load_injuries()
+
+        self.keyword_map = {}
+        for idx, item in enumerate(self.injuries):
+            for kw in item.get("keywords", []):
+                self.keyword_map[clean_text(kw)] = idx
+
+    def find_by_name(self, query):
+
+        q = clean_text(query)
+
+        if q in self.keyword_map:
+            return self.injuries[self.keyword_map[q]]
+
+        for item in self.injuries:
+            if q in clean_text(item.get("name", "")):
+                return item
+
+            for kw in item.get("keywords", []):
+                if q in clean_text(kw):
+                    return item
+
+            if q in clean_text(item.get("description", "")):
+                return item
+
+        return None
+
+    def search_by_symptom(self, symptom_text):
+
+        q = clean_text(symptom_text)
+        matches = []
+
+        for item in self.injuries:
+            combined = " ".join(
+                [item.get("name", "")] +
+                item.get("keywords", []) +
+                [item.get("description", "")]
+            )
+            if q in clean_text(combined):
+                matches.append(item)
+
+        return matches
+
+    def get_all_injuries(self):
+        return [item.get("name", "") for item in self.injuries]
